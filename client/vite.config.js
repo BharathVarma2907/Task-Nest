@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Base path for GitHub Pages project site
-  base: '/Task-Nest/',
+  // Base path configurable via env for Pages/Vercel
+  base: process.env.VITE_BASE || '/',
   server: {
     port: 3000,
   },

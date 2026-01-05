@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "client",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist",
+        "installCommand": "npm ci",
+        "buildCommand": "npm run build"
+      }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/" }
+  ]
+}
