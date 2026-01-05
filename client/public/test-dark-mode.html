@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen p-8 transition-colors">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold mb-4">Dark Mode Test</h1>
+        
+        <button 
+            onclick="toggleDark()"
+            class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg mb-4"
+        >
+            Toggle Dark Mode
+        </button>
+        
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
+            <p class="mb-2">Current HTML classes: <span id="classes" class="font-mono"></span></p>
+            <p class="mb-2">Dark mode is: <span id="status" class="font-bold"></span></p>
+        </div>
+        
+        <div class="mt-4 p-4 bg-white dark:bg-gray-700 rounded shadow">
+            <p>This box should change color when you toggle dark mode.</p>
+        </div>
+    </div>
+    
+    <script>
+        function updateStatus() {
+            const html = document.documentElement;
+            const isDark = html.classList.contains('dark');
+            document.getElementById('classes').textContent = html.className || '(none)';
+            document.getElementById('status').textContent = isDark ? 'ON' : 'OFF';
+            document.getElementById('status').className = isDark ? 'font-bold text-green-500' : 'font-bold text-red-500';
+        }
+        
+        function toggleDark() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+            } else {
+                html.classList.add('dark');
+            }
+            updateStatus();
+        }
+        
+        updateStatus();
+    </script>
+</body>
+</html>
